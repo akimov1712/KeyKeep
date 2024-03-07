@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "keyKeep"
 include(":app")
- 
