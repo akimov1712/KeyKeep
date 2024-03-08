@@ -21,6 +21,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             floatingActionButton.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddOrEditFragment())
             }
+            binding.tvPasswordList.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToConfirmDialog())
+            }
         }
     }
 }

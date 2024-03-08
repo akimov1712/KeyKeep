@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_homeFragment_to_addOrEditFragment"
             app:destination="@id/addOrEditFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_confirmDialog"
+            app:destination="@id/confirmDialog" />
     </fragment>
 
 
@@ -31,5 +34,10 @@
         android:name="ru.topbun.keyKeep.presentation.AddOrEditFragment"
         android:label="fragment_add_or_edit"
         tools:layout="@layout/fragment_add_or_edit" />
+    <dialog
+        android:id="@+id/confirmDialog"
+        android:name="ru.topbun.keyKeep.presentation.ConfirmDialog"
+        android:label="dialog_confirm"
+        tools:layout="@layout/dialog_confirm" />
 
 </navigation>

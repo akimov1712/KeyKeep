@@ -55,6 +55,7 @@ dependencies {
 
 //    View
     implementation (libs.picasso)
+    implementation (libs.otpview)
 
 //    Navigation
     implementation(libs.navigationFragment)
