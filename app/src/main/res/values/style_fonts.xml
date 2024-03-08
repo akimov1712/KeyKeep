@@ -23,7 +23,7 @@
     <style name="style_text_secondary">
         <item name="fontFamily">@font/nunito_medium</item>
         <item name="android:textColor">@color/text_grey</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     
