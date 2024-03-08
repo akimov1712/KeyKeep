@@ -37,6 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = "18"
     }
+    buildFeatures{
+        viewBinding = true
+    }
     ksp {
         arg("room.schemaLocation", "$projectDir/schemas")
     }
@@ -46,6 +49,8 @@ dependencies {
 
 //    Hilt
     implementation (libs.hiltAndroid)
+    implementation(libs.legacy.support.v4)
+    implementation(libs.lifecycle.livedata.ktx)
     ksp (libs.hiltCompiler)
 
 //    View
