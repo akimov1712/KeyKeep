@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">keyKeep</string>
+    <string name="app_name">KeyKeep</string>
+    <string name="password_list">Список паролей</string>
+    <string name="settings">Настройки</string>
+    <string name="search">Поиск</string>
+    <string name="open_drawer_layout">Открыть выдвижное меню</string>
+    <string name="set_password">Установить пароль</string>
+    <string name="set_finger_password">Установить отпечаток</string>
 </resources>
