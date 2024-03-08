@@ -10,4 +10,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="close_screen">Закрыть страницу</string>
     <string name="name">Название</string>
+    <string name="site_example">Сайт: https://example.com/</string>
+    <string name="mail_optionally">Почта (Необязательно)</string>
+    <string name="password">Пароль</string>
+    <string name="edit">Изменить</string>
 </resources>

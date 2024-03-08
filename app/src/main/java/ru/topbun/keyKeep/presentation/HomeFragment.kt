@@ -18,6 +18,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             btnSearch.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchFragment())
             }
+            floatingActionButton.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddOrEditFragment())
+            }
         }
     }
 }

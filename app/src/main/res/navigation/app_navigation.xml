@@ -13,7 +13,11 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment"
-            app:enterAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_addOrEditFragment"
+            app:destination="@id/addOrEditFragment" />
     </fragment>
 
 
@@ -22,5 +26,10 @@
         android:name="ru.topbun.keyKeep.presentation.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/addOrEditFragment"
+        android:name="ru.topbun.keyKeep.presentation.AddOrEditFragment"
+        android:label="fragment_add_or_edit"
+        tools:layout="@layout/fragment_add_or_edit" />
 
 </navigation>
