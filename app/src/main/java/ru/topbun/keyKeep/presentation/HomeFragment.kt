@@ -26,6 +26,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 closeDrawerLayout()
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSetFingerPasswordDialog())
             }
+            btnAddPassword.setOnClickListener{
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddOrEditFragment())
+            }
         }
     }
 

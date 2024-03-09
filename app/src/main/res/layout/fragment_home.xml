@@ -75,7 +75,7 @@
             tools:listitem="@layout/item_password" />
 
         <ImageButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/btn_add_password"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_margin="24dp"
