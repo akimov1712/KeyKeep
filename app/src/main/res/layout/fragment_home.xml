@@ -33,6 +33,7 @@
                 android:contentDescription="@string/open_drawer_layout" />
 
             <TextView
+                android:id="@+id/tv_title"
                 style="@style/style_text_large_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

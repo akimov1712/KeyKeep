@@ -26,7 +26,6 @@
     </style>
 
     <style name="style_pin_edit_text" parent="@style/style_text_large_title">
-        <item name="android:background">@drawable/background_drawer_button</item>
         <item name="android:inputType">number</item>
         <item name="android:textColor">@color/text_red</item>
         <item name="OtpCursorColor">@color/element_red</item>

@@ -15,4 +15,7 @@
     <string name="password">Пароль</string>
     <string name="edit">Изменить</string>
     <string name="confirm">Подтверждение</string>
+    <string name="enter_code_or_use_finger_password">Введите код или используется отпечаток пальца</string>
+    <string name="enter_password_and_click_button">Введите пароль и нажмите на кнопку для подтверждения</string>
+    <string name="set">Установить</string>
 </resources>

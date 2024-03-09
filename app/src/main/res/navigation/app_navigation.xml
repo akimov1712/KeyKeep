@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_homeFragment_to_confirmDialog"
             app:destination="@id/confirmDialog" />
+        <action
+            android:id="@+id/action_homeFragment_to_setMasterPasswordDialog"
+            app:destination="@id/setMasterPasswordDialog" />
     </fragment>
 
 
@@ -39,5 +42,9 @@
         android:name="ru.topbun.keyKeep.presentation.ConfirmDialog"
         android:label="dialog_confirm"
         tools:layout="@layout/dialog_confirm" />
+    <dialog
+        android:id="@+id/setMasterPasswordDialog"
+        android:name="ru.topbun.keyKeep.presentation.SetMasterPasswordDialog"
+        android:label="SetMasterPasswordDialog" />
 
 </navigation>
