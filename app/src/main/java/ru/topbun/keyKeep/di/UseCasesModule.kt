@@ -20,25 +20,25 @@ interface UseCasesModule {
 
         @Provides
         @Singleton
-        fun bindAddPasswordUseCase(repository: PasswordRepository): AddPasswordUseCase{
+        fun provideAddPasswordUseCase(repository: PasswordRepository): AddPasswordUseCase{
             return AddPasswordUseCase(repository)
         }
 
         @Provides
         @Singleton
-        fun bindGetPasswordListUseCase(repository: PasswordRepository): GetPasswordListUseCase{
+        fun provideGetPasswordListUseCase(repository: PasswordRepository): GetPasswordListUseCase{
             return GetPasswordListUseCase(repository)
         }
 
         @Provides
         @Singleton
-        fun bindGetPasswordUseCase(repository: PasswordRepository): GetPasswordUseCase{
+        fun provideGetPasswordUseCase(repository: PasswordRepository): GetPasswordUseCase{
             return GetPasswordUseCase(repository)
         }
 
         @Provides
         @Singleton
-        fun bindDeletePasswordUseCase(repository: PasswordRepository): DeletePasswordUseCase{
+        fun provideDeletePasswordUseCase(repository: PasswordRepository): DeletePasswordUseCase{
             return DeletePasswordUseCase(repository)
         }
 
