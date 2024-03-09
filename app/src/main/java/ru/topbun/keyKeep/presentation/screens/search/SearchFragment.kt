@@ -1,4 +1,4 @@
-package ru.topbun.keyKeep.presentation
+package ru.topbun.keyKeep.presentation.screens.search
 
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint

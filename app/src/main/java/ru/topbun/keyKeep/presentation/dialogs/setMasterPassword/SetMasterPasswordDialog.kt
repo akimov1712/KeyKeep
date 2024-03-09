@@ -1,4 +1,4 @@
-package ru.topbun.keyKeep.presentation
+package ru.topbun.keyKeep.presentation.dialogs.setMasterPassword
 
 import ru.topbun.keyKeep.databinding.DialogSetMasterPasswordBinding
 import ru.topbun.keyKeep.presentation.base.BaseDialogFragment

@@ -20,4 +20,5 @@
     <string name="set">Установить</string>
     <string name="set_finger_scan">Установить отпечаток</string>
     <string name="touch_finger_to_scanner">Приложите палец к сканеру отпечатка пальца</string>
+    <string name="list_empty">Список пуст</string>
 </resources>

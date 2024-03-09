@@ -18,7 +18,7 @@ interface RoomModule {
 
         @Provides
         @Singleton
-        fun providePasswordDao(@ApplicationContext application: Application): PasswordDao {
+        fun providePasswordDao(application: Application): PasswordDao {
             return AppDatabase.getInstance(application).passwordDao()
         }
 

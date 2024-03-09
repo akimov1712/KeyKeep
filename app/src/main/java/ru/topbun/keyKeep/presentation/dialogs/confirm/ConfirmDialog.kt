@@ -1,4 +1,4 @@
-package ru.topbun.keyKeep.presentation
+package ru.topbun.keyKeep.presentation.dialogs.confirm
 
 import dagger.hilt.android.AndroidEntryPoint
 import ru.topbun.keyKeep.databinding.DialogConfirmBinding

@@ -1,14 +1,14 @@
-package ru.topbun.keyKeep.presentation
+package ru.topbun.keyKeep.presentation.screens.detail
 
 import android.text.InputType
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.topbun.keyKeep.R
-import ru.topbun.keyKeep.databinding.FragmentAddOrEditBinding
+import ru.topbun.keyKeep.databinding.FragmentDetailBinding
 import ru.topbun.keyKeep.presentation.base.BaseFragment
 
 @AndroidEntryPoint
-class AddOrEditFragment :BaseFragment<FragmentAddOrEditBinding>(FragmentAddOrEditBinding::inflate){
+class DetailFragment :BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate){
 
     private var isShowPassword = false
 
