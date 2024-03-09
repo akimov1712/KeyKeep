@@ -34,6 +34,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_passwords"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -43,5 +44,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_search"
         tools:listitem="@layout/item_password" />
+
+    <TextView
+        android:id="@+id/tv_empty_list"
+        style="@style/style_text_secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/list_empty"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_passwords"
+        app:layout_constraintEnd_toEndOf="@+id/rv_passwords"
+        app:layout_constraintStart_toStartOf="@+id/rv_passwords"
+        app:layout_constraintTop_toTopOf="@+id/rv_passwords" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:indeterminateTint="@color/element_red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_passwords"
+        app:layout_constraintEnd_toEndOf="@+id/rv_passwords"
+        app:layout_constraintStart_toStartOf="@+id/rv_passwords"
+        app:layout_constraintTop_toTopOf="@+id/rv_passwords" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

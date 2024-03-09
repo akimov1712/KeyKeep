@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 import ru.topbun.keyKeep.data.database.entities.PasswordDBO
+import ru.topbun.keyKeep.domain.enities.PasswordEntity
 
 @Dao
 interface PasswordDao {
@@ -22,4 +23,6 @@ interface PasswordDao {
     @Query("SELECT * FROM password WHERE id=:id LIMIT 1")
     fun getWithId(id: Int): Flow<PasswordDBO>
 
+    @Query("SELECT * FROM password WHERE name LIKE '%' || :query || '%'")
+    fun getWithSearchRequest(query: String): Flow<List<PasswordDBO>>
 }

@@ -1,6 +1,5 @@
 package ru.topbun.keyKeep.di
 
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,7 +8,8 @@ import ru.topbun.keyKeep.domain.repositories.PasswordRepository
 import ru.topbun.keyKeep.domain.useCases.AddPasswordUseCase
 import ru.topbun.keyKeep.domain.useCases.DeletePasswordUseCase
 import ru.topbun.keyKeep.domain.useCases.GetPasswordListUseCase
-import ru.topbun.keyKeep.domain.useCases.GetPasswordUseCase
+import ru.topbun.keyKeep.domain.useCases.GetPasswordWithIdUseCase
+import ru.topbun.keyKeep.domain.useCases.GetPasswordWithSearchRequestUseCase
 import javax.inject.Singleton
 
 @Module
@@ -32,14 +32,20 @@ interface UseCasesModule {
 
         @Provides
         @Singleton
-        fun provideGetPasswordUseCase(repository: PasswordRepository): GetPasswordUseCase{
-            return GetPasswordUseCase(repository)
+        fun provideGetPasswordUseCase(repository: PasswordRepository): GetPasswordWithIdUseCase{
+            return GetPasswordWithIdUseCase(repository)
         }
 
         @Provides
         @Singleton
         fun provideDeletePasswordUseCase(repository: PasswordRepository): DeletePasswordUseCase{
             return DeletePasswordUseCase(repository)
+        }
+
+        @Provides
+        @Singleton
+        fun provideGetPasswordWithSearchRequestUseCase(repository: PasswordRepository): GetPasswordWithSearchRequestUseCase{
+            return GetPasswordWithSearchRequestUseCase(repository)
         }
 
     }
