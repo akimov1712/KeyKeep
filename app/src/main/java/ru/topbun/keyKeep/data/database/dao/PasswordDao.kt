@@ -1,11 +1,11 @@
-package ru.topbun.keyKeep.data.source.locale.database.dao
+package ru.topbun.keyKeep.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
-import ru.topbun.keyKeep.data.source.locale.database.entities.PasswordDBO
+import ru.topbun.keyKeep.data.database.entities.PasswordDBO
 
 @Dao
 interface PasswordDao {

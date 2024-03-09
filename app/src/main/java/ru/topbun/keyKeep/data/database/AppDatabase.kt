@@ -1,11 +1,11 @@
-package ru.topbun.keyKeep.data.source.locale.database
+package ru.topbun.keyKeep.data.database
 
 import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import ru.topbun.keyKeep.data.source.locale.database.dao.PasswordDao
-import ru.topbun.keyKeep.data.source.locale.database.entities.PasswordDBO
+import ru.topbun.keyKeep.data.database.dao.PasswordDao
+import ru.topbun.keyKeep.data.database.entities.PasswordDBO
 
 @Database(
     entities = [PasswordDBO::class],

@@ -6,8 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import ru.topbun.keyKeep.data.source.locale.database.AppDatabase
-import ru.topbun.keyKeep.data.source.locale.database.dao.PasswordDao
+import ru.topbun.keyKeep.data.database.AppDatabase
+import ru.topbun.keyKeep.data.database.dao.PasswordDao
 import javax.inject.Singleton
 
 @Module
@@ -18,7 +18,7 @@ interface RoomModule {
 
         @Provides
         @Singleton
-        fun providePasswordDao(@ApplicationContext application: Application): PasswordDao{
+        fun providePasswordDao(@ApplicationContext application: Application): PasswordDao {
             return AppDatabase.getInstance(application).passwordDao()
         }
 
