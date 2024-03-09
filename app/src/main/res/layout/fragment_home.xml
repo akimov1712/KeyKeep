@@ -122,7 +122,7 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:text="@string/set_finger_password"
-            android:drawableStart="@drawable/ic_finger_scan"
+            android:drawableStart="@drawable/ic_set_finger_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_set_master_password" />

@@ -12,21 +12,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     override fun setListenersInView() {
         super.setListenersInView()
         with(binding) {
-            tvTitle.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToConfirmDialog())
-            }
             btnMenu.setOnClickListener {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
             btnSearch.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchFragment())
             }
-            floatingActionButton.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddOrEditFragment())
-            }
-            tvPasswordList.setOnClickListener {
+            btnSetMasterPassword.setOnClickListener {
+                closeDrawerLayout()
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSetMasterPasswordDialog())
             }
+            btnSetFingerPassword.setOnClickListener {
+                closeDrawerLayout()
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSetFingerPasswordDialog())
+            }
         }
+    }
+
+    private fun closeDrawerLayout(){
+        binding.drawerLayout.closeDrawers()
     }
 }
