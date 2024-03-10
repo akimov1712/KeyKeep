@@ -15,6 +15,7 @@ import ru.topbun.keyKeep.R
 import ru.topbun.keyKeep.databinding.FragmentDetailBinding
 import ru.topbun.keyKeep.domain.enities.PasswordEntity
 import ru.topbun.keyKeep.presentation.base.BaseFragment
+import ru.topbun.keyKeep.presentation.base.CustomToast
 
 @AndroidEntryPoint
 class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate) {
@@ -39,9 +40,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                 tvTitle.text = textMode
             } else {
                 val textMode = requireContext().getString(R.string.edit)
-                lifecycleScope.launch {
-                    viewModel.getPassword(args.idPassword)
-                }
+                viewModel.getPassword(args.idPassword)
                 btnDelete.visibility = View.VISIBLE
                 btnAddOrEdit.text = textMode
                 tvTitle.text = textMode
@@ -66,6 +65,9 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                             is DetailState.PasswordItem -> {
                                 passwordItem = it.item
                                 setInfoPasswordInView(it.item)
+                            }
+                            is DetailState.ErrorValidData -> {
+                                CustomToast.toastDefault(requireContext(), it.message)
                             }
 
                             is DetailState.ShouldCloseScreen -> {

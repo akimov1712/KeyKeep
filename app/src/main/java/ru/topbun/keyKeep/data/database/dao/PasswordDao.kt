@@ -21,7 +21,7 @@ interface PasswordDao {
     fun getList(): Flow<List<PasswordDBO>>
 
     @Query("SELECT * FROM password WHERE id=:id LIMIT 1")
-    fun getWithId(id: Int): PasswordDBO
+    fun getWithId(id: Int): Flow<PasswordDBO>
 
     @Query("SELECT * FROM password WHERE name LIKE '%' || :query || '%'")
     fun getWithSearchRequest(query: String): Flow<List<PasswordDBO>>

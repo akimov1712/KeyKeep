@@ -53,7 +53,8 @@
         <action
             android:id="@+id/action_addOrEditFragment_to_confirmDeleteDialog"
             app:destination="@id/confirmDeleteDialog"
-            app:popUpTo="@id/addOrEditFragment" />
+            app:popUpTo="@id/addOrEditFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <dialog
         android:id="@+id/setMasterPasswordDialog"

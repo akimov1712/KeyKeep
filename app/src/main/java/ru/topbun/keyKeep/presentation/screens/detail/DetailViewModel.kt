@@ -3,8 +3,11 @@ package ru.topbun.keyKeep.presentation.screens.detail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import ru.topbun.keyKeep.domain.enities.PasswordEntity
 import ru.topbun.keyKeep.domain.useCases.password.AddPasswordUseCase
@@ -18,8 +21,8 @@ class DetailViewModel @Inject constructor(
     private val addPasswordUseCase: AddPasswordUseCase
 ): ViewModel() {
 
-    private val _state = MutableStateFlow<DetailState>(DetailState.Initial)
-    val state get() = _state.asStateFlow()
+    private val _state = MutableSharedFlow<DetailState>(1)
+    val state get() = _state.asSharedFlow()
 
     fun addPassword(
         name: String?,email: String?,
@@ -65,7 +68,7 @@ class DetailViewModel @Inject constructor(
     private fun String?.parseString() = this?.trim() ?: ""
 
     fun getPassword(id: Int) = viewModelScope.launch {
-        val item = getPasswordWithIdUseCase(id)
+        val item = getPasswordWithIdUseCase(id).first()
         _state.emit(DetailState.PasswordItem(item))
     }
 
