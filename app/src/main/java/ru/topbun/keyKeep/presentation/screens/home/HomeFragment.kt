@@ -1,7 +1,6 @@
 package ru.topbun.keyKeep.presentation.screens.home
 
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -12,7 +11,9 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.topbun.keyKeep.databinding.FragmentHomeBinding
+import ru.topbun.keyKeep.domain.enities.ConfirmTypeEnum
 import ru.topbun.keyKeep.presentation.base.BaseFragment
+import ru.topbun.keyKeep.presentation.base.CustomToast
 import ru.topbun.keyKeep.presentation.base.adapter.PasswordAdapter
 import ru.topbun.keyKeep.presentation.dialogs.confirm.ConfirmDialog
 
@@ -22,12 +23,36 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private val viewModel by viewModels<HomeViewModel>()
     private val adapter by lazy { PasswordAdapter() }
 
+    override fun setViews() {
+        super.setViews()
+        getValueFromFragmentResult()
+    }
+
     override fun setAdapters() {
         super.setAdapters()
         binding.rvPasswords.adapter = adapter
+    }
+
+    private fun getValueFromFragmentResult() {
         setFragmentResultListener(ConfirmDialog.CONFIRM_REQUEST_KEY) { _, bundle ->
-            val value = bundle.getBoolean(ConfirmDialog.CONFIRM_EXTRA_KEY, false)
-            Toast.makeText(requireContext(), value.toString(), Toast.LENGTH_SHORT).show()
+            val isValid = bundle.getBoolean(ConfirmDialog.CONFIRM_EXTRA_KEY, false)
+            val type =
+                bundle.getSerializable(ConfirmDialog.CONFIRM_TYPE_EXTRA_KEY) as? ConfirmTypeEnum
+            if (isValid) {
+                when (type) {
+                    ConfirmTypeEnum.SHOW_PASSWORD -> {
+
+                    }
+
+                    ConfirmTypeEnum.PERMISSION_SET_MASTER_PASSWORD -> {
+                        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSetMasterPasswordDialog())
+                    }
+
+                    else -> {}
+                }
+            } else {
+                CustomToast.toastDefault(requireContext(), "Неправильный пароль")
+            }
         }
     }
 
@@ -63,9 +88,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     override fun setListenersInView() {
         super.setListenersInView()
         with(binding) {
-            tvTitle.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToConfirmDialog())
-            }
             btnMenu.setOnClickListener {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
@@ -74,7 +96,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
             btnSetMasterPassword.setOnClickListener {
                 closeDrawerLayout()
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSetMasterPasswordDialog())
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToConfirmDialog(
+                        ConfirmTypeEnum.PERMISSION_SET_MASTER_PASSWORD
+                    )
+                )
             }
             btnSetFingerPassword.setOnClickListener {
                 closeDrawerLayout()

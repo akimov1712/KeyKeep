@@ -27,7 +27,6 @@ class CheckFingerPasswordDialog :
                 viewModel.state.collect {
                     when (it) {
                         is CheckFingerState.Result -> {
-                            Log.d("TEST", it.toString())
                             defineAction(it.result)
                         }
 
