@@ -14,7 +14,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val deletePasswordUseCase: DeletePasswordUseCase,
     private val getPasswordWithIdUseCase: GetPasswordWithIdUseCase,
     private val addPasswordUseCase: AddPasswordUseCase
 ): ViewModel() {
@@ -66,14 +65,8 @@ class DetailViewModel @Inject constructor(
     private fun String?.parseString() = this?.trim() ?: ""
 
     fun getPassword(id: Int) = viewModelScope.launch {
-        getPasswordWithIdUseCase(id).collect{
-            _state.emit(DetailState.PasswordItem(it))
-        }
-    }
-
-    fun deletePassword(id: Int) = viewModelScope.launch {
-        deletePasswordUseCase(id)
-        _state.emit(DetailState.ShouldCloseScreen)
+        val item = getPasswordWithIdUseCase(id)
+        _state.emit(DetailState.PasswordItem(item))
     }
 
 }

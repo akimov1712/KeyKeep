@@ -29,4 +29,8 @@
     <string name="check_fingerprint">Проверить отпечаток</string>
     <string name="image_to_scan_fingerprint">картинка со сканером отпечатка</string>
     <string name="Password_not_defined">Master password not defined</string>
+    <string name="delete_password">Удалить пароль</string>
+    <string name="you_really_delete_this_password">Вы уверены, что хотите удалить пароль от </string>
+    <string name="delete">Удалить</string>
+    <string name="cancel">Отмена</string>
 </resources>

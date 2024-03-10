@@ -1,7 +1,6 @@
 package ru.topbun.keyKeep.presentation.screens.detail
 
 import android.text.InputType
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -18,28 +17,31 @@ import ru.topbun.keyKeep.domain.enities.PasswordEntity
 import ru.topbun.keyKeep.presentation.base.BaseFragment
 
 @AndroidEntryPoint
-class DetailFragment :BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate){
+class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate) {
 
     private val args by navArgs<DetailFragmentArgs>()
     private val viewModel by viewModels<DetailViewModel>()
 
     private var isShowPassword = false
+    private var passwordItem: PasswordEntity? = null
 
     override fun setViews() {
         super.setViews()
         defineMode()
     }
 
-    private fun defineMode(){
-        with(binding){
-            if (args.idPassword == Const.UNDEFINED_ID){
+    private fun defineMode() {
+        with(binding) {
+            if (args.idPassword == Const.UNDEFINED_ID) {
                 val textMode = requireContext().getString(R.string.add)
                 btnDelete.visibility = View.GONE
                 btnAddOrEdit.text = textMode
                 tvTitle.text = textMode
             } else {
                 val textMode = requireContext().getString(R.string.edit)
-                viewModel.getPassword(args.idPassword)
+                lifecycleScope.launch {
+                    viewModel.getPassword(args.idPassword)
+                }
                 btnDelete.visibility = View.VISIBLE
                 btnAddOrEdit.text = textMode
                 tvTitle.text = textMode
@@ -47,7 +49,7 @@ class DetailFragment :BaseFragment<FragmentDetailBinding>(FragmentDetailBinding:
         }
     }
 
-    private fun FragmentDetailBinding.setInfoPasswordInView(password: PasswordEntity){
+    private fun FragmentDetailBinding.setInfoPasswordInView(password: PasswordEntity) {
         etName.setText(password.name)
         etEmail.setText(password.email)
         etSite.setText(password.site)
@@ -56,17 +58,21 @@ class DetailFragment :BaseFragment<FragmentDetailBinding>(FragmentDetailBinding:
 
     override fun observeViewModel() {
         super.observeViewModel()
-        with(binding){
+        with(binding) {
             lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.RESUMED){
-                    viewModel.state.collect{
-                        when(it){
+                repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                    viewModel.state.collect {
+                        when (it) {
                             is DetailState.PasswordItem -> {
+                                passwordItem = it.item
                                 setInfoPasswordInView(it.item)
                             }
+
                             is DetailState.ShouldCloseScreen -> {
                                 findNavController().popBackStack()
-                            } else -> {}
+                            }
+
+                            else -> {}
                         }
                     }
                 }
@@ -76,10 +82,10 @@ class DetailFragment :BaseFragment<FragmentDetailBinding>(FragmentDetailBinding:
 
     override fun setListenersInView() {
         super.setListenersInView()
-        with(binding){
+        with(binding) {
             btnBack.setOnClickListener { findNavController().popBackStack() }
             btnShowPassword.setOnClickListener {
-                if(isShowPassword) {
+                if (isShowPassword) {
                     etPassword.inputType = TYPE_PASSWORD_VISIBLE
                     btnShowPassword.setImageResource(R.drawable.ic_eye_close)
                 } else {
@@ -95,10 +101,21 @@ class DetailFragment :BaseFragment<FragmentDetailBinding>(FragmentDetailBinding:
                 val password = etPassword.text.trim().toString()
                 viewModel.addPassword(name, email, site, password, args.idPassword)
             }
+            btnDelete.setOnClickListener {
+                passwordItem?.let {
+                    findNavController().navigate(
+                        DetailFragmentDirections.actionAddOrEditFragmentToConfirmDeleteDialog(
+                            it.id,
+                            it.name
+                        )
+                    )
+                }
+
+            }
         }
     }
 
-    companion object{
+    companion object {
         private const val TYPE_PASSWORD_VISIBLE = 129
     }
 

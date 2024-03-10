@@ -1,6 +1,7 @@
 package ru.topbun.keyKeep.data.repositories
 
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import ru.topbun.keyKeep.data.database.dao.PasswordDao
 import ru.topbun.keyKeep.data.mappers.PasswordMapper
@@ -29,8 +30,8 @@ class PasswordRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPasswordWithId(id: Int): Flow<PasswordEntity> {
-        return passwordDao.getWithId(id).map { mapper.mapDBOToEntity(it) }
+    override suspend fun getPasswordWithId(id: Int): PasswordEntity {
+        return mapper.mapDBOToEntity(passwordDao.getWithId(id))
     }
 
     override suspend fun addPassword(password: PasswordEntity){

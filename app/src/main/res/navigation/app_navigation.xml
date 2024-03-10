@@ -50,6 +50,10 @@
         <argument
             android:name="idPassword"
             app:argType="integer"/>
+        <action
+            android:id="@+id/action_addOrEditFragment_to_confirmDeleteDialog"
+            app:destination="@id/confirmDeleteDialog"
+            app:popUpTo="@id/addOrEditFragment" />
     </fragment>
     <dialog
         android:id="@+id/setMasterPasswordDialog"
@@ -83,6 +87,17 @@
         <argument
             android:name="type"
             app:argType="ru.topbun.keyKeep.domain.enities.ConfirmTypeEnum" />
+    </dialog>
+    <dialog
+        android:id="@+id/confirmDeleteDialog"
+        android:name="ru.topbun.keyKeep.presentation.dialogs.confirmDelete.ConfirmDeleteDialog"
+        android:label="ConfirmDeleteDialog" >
+        <argument
+            android:name="passwordId"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </dialog>
 
 
