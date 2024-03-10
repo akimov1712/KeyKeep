@@ -1,5 +1,6 @@
 package ru.topbun.keyKeep.data.mappers
 
+import ru.topbun.keyKeep.data.EncryptionHelper
 import ru.topbun.keyKeep.data.database.entities.PasswordDBO
 import ru.topbun.keyKeep.domain.enities.PasswordEntity
 import javax.inject.Inject
@@ -11,7 +12,7 @@ class PasswordMapper @Inject constructor(){
         name = entity.name,
         site = entity.site,
         email = entity.email,
-        password = entity.password,
+        password = EncryptionHelper.encrypt(entity.password),
     )
 
     fun mapDBOToEntity(entity: PasswordDBO) = PasswordEntity(
@@ -19,7 +20,7 @@ class PasswordMapper @Inject constructor(){
         name = entity.name,
         site = entity.site,
         email = entity.email,
-        password = entity.password,
+        password = EncryptionHelper.decrypt(entity.password),
     )
 
 }
