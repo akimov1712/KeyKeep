@@ -145,7 +145,7 @@
             style="@style/style_btn_drawer_layout"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:text="@string/set_finger_password"
+            android:text="@string/check_fingerprint"
             android:drawableStart="@drawable/ic_set_finger_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

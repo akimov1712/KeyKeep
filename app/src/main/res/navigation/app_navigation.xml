@@ -51,7 +51,7 @@
         android:label="SetMasterPasswordDialog" />
     <dialog
         android:id="@+id/setFingerPasswordDialog"
-        android:name="ru.topbun.keyKeep.presentation.dialogs.setFinger.SetFingerPasswordDialog"
+        android:name="ru.topbun.keyKeep.presentation.dialogs.checkFinger.CheckFingerPasswordDialog"
         android:label="SetFingerPasswordDialog" />
 
 </navigation>

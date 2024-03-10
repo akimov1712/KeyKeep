@@ -1,4 +1,4 @@
-package ru.topbun.keyKeep.domain.useCases
+package ru.topbun.keyKeep.domain.useCases.password
 
 import ru.topbun.keyKeep.domain.repositories.PasswordRepository
 

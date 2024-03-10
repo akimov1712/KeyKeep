@@ -21,4 +21,11 @@
     <string name="set_finger_scan">Установить отпечаток</string>
     <string name="touch_finger_to_scanner">Приложите палец к сканеру отпечатка пальца</string>
     <string name="list_empty">Список пуст</string>
+    <string name="device_have_finger_scan">+ Отпечаток присутствует на устройстве</string>
+    <string name="device_not_have_finger_scan">- Отпечаток отсутствует на устройстве</string>
+    <string name="error_check">Ошибка проверки: %1$s</string>
+    <string name="The_device_does_not_support_a_fingerprint_scanner">Устройство не поддерживает сканер отпечатков пальцев</string>
+    <string name="No_registered_fingerprints_on_the_device">Нет зарегистрированных отпечатков пальцев на устройстве</string>
+    <string name="check_fingerprint">Проверить отпечаток</string>
+    <string name="image_to_scan_fingerprint">картинка со сканером отпечатка</string>
 </resources>

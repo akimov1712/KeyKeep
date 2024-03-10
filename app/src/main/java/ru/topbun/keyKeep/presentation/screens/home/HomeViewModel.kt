@@ -6,8 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.topbun.keyKeep.domain.enities.PasswordEntity
-import ru.topbun.keyKeep.domain.useCases.GetPasswordListUseCase
+import ru.topbun.keyKeep.domain.useCases.password.GetPasswordListUseCase
 import javax.inject.Inject
 
 @HiltViewModel

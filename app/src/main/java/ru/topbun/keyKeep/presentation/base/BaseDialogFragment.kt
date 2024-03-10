@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseDialogFragment<VB: ViewBinding>(
+
+abstract class BaseDialogFragment<VB : ViewBinding>(
     private val inflate: Inflate<VB>
 ) : DialogFragment() {
 
@@ -33,15 +33,15 @@ abstract class BaseDialogFragment<VB: ViewBinding>(
         observeViewModel()
     }
 
-    open fun setViews(){
+    open fun setViews() {
         setListenersInView()
         setAdapters()
     }
 
-    open fun setListenersInView(){}
-    open fun setAdapters(){}
+    open fun setListenersInView() {}
+    open fun setAdapters() {}
 
-    open fun observeViewModel(){}
+    open fun observeViewModel() {}
 
     override fun onDestroyView() {
         super.onDestroyView()
