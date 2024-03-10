@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import ru.topbun.keyKeep.R
 import ru.topbun.keyKeep.databinding.ItemPasswordBinding
 import ru.topbun.keyKeep.domain.enities.PasswordEntity
 import ru.topbun.keyKeep.utils.getFaviconUrl
@@ -12,6 +13,8 @@ import ru.topbun.keyKeep.utils.getFaviconUrl
 class PasswordAdapter: ListAdapter<PasswordEntity, PasswordAdapter.PasswordViewHolder>(
     PasswordDiffCallback()
 ) {
+
+    var setOnItemClickListener: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasswordViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,7 +27,10 @@ class PasswordAdapter: ListAdapter<PasswordEntity, PasswordAdapter.PasswordViewH
         with(holder.binding){
             tvName.text = item.name
             tvEmail.text = item.email
-            Picasso.get().load(getFaviconUrl(item.site)).into(ivFavicon)
+            Picasso.get().load(getFaviconUrl(item.site)).error(R.drawable.ic_favicon_not_found).into(ivFavicon)
+        }
+        holder.itemView.setOnClickListener {
+            setOnItemClickListener?.invoke(item.id)
         }
     }
 

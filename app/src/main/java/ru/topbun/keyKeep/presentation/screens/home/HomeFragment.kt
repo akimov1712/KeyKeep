@@ -1,7 +1,10 @@
 package ru.topbun.keyKeep.presentation.screens.home
 
+import android.util.Log
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -10,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import ru.topbun.Const
 import ru.topbun.keyKeep.databinding.FragmentHomeBinding
 import ru.topbun.keyKeep.domain.enities.ConfirmTypeEnum
 import ru.topbun.keyKeep.presentation.base.BaseFragment
@@ -31,6 +35,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     override fun setAdapters() {
         super.setAdapters()
         binding.rvPasswords.adapter = adapter
+        adapter.setOnItemClickListener = {
+            setFragmentResult(
+                ConfirmDialog.EXTERNAL_REQUEST_KEY,
+                bundleOf(
+                    ConfirmDialog.EXTERNAL_KEY_EXTRA to it,
+                )
+            )
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToConfirmDialog(
+                ConfirmTypeEnum.SHOW_PASSWORD
+            ))
+        }
     }
 
     private fun getValueFromFragmentResult() {
@@ -41,7 +56,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             if (isValid) {
                 when (type) {
                     ConfirmTypeEnum.SHOW_PASSWORD -> {
-
+                        val id = bundle.getInt(ConfirmDialog.CONFIRM_PASSWORD_ID_EXTRA_KEY)
+                        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddOrEditFragment(id))
                     }
 
                     ConfirmTypeEnum.PERMISSION_SET_MASTER_PASSWORD -> {
@@ -107,7 +123,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSetFingerPasswordDialog())
             }
             btnAddPassword.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddOrEditFragment())
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddOrEditFragment(Const.UNDEFINED_ID))
             }
         }
     }
@@ -123,4 +139,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             tvEmptyList.visibility = View.GONE
         }
     }
+
 }

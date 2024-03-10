@@ -1,19 +1,27 @@
 package ru.topbun.keyKeep.presentation.screens.detail
 
 import android.text.InputType
+import android.util.Log
 import android.view.View
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import ru.topbun.Const
 import ru.topbun.keyKeep.R
 import ru.topbun.keyKeep.databinding.FragmentDetailBinding
+import ru.topbun.keyKeep.domain.enities.PasswordEntity
 import ru.topbun.keyKeep.presentation.base.BaseFragment
 
 @AndroidEntryPoint
 class DetailFragment :BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate){
 
     private val args by navArgs<DetailFragmentArgs>()
+    private val viewModel by viewModels<DetailViewModel>()
 
     private var isShowPassword = false
 
@@ -25,17 +33,49 @@ class DetailFragment :BaseFragment<FragmentDetailBinding>(FragmentDetailBinding:
     private fun defineMode(){
         with(binding){
             if (args.idPassword == Const.UNDEFINED_ID){
+                val textMode = requireContext().getString(R.string.add)
                 btnDelete.visibility = View.GONE
-                tvTitle.text = "Добавить"
+                btnAddOrEdit.text = textMode
+                tvTitle.text = textMode
             } else {
+                val textMode = requireContext().getString(R.string.edit)
+                viewModel.getPassword(args.idPassword)
                 btnDelete.visibility = View.VISIBLE
-                tvTitle.text = "Изменить"
+                btnAddOrEdit.text = textMode
+                tvTitle.text = textMode
             }
         }
     }
 
+    private fun FragmentDetailBinding.setInfoPasswordInView(password: PasswordEntity){
+        etName.setText(password.name)
+        etEmail.setText(password.email)
+        etSite.setText(password.site)
+        etPassword.setText(password.password)
+    }
+
     override fun observeViewModel() {
         super.observeViewModel()
+        with(binding){
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.RESUMED){
+                    viewModel.state.collect{
+                        when(it){
+                            is DetailState.PasswordItem -> {
+                                setInfoPasswordInView(it.item)
+                            }
+                            is DetailState.ShouldCloseScreen -> {
+                                findNavController().popBackStack()
+                            } else -> {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    override fun setListenersInView() {
+        super.setListenersInView()
         with(binding){
             btnBack.setOnClickListener { findNavController().popBackStack() }
             btnShowPassword.setOnClickListener {
@@ -47,6 +87,13 @@ class DetailFragment :BaseFragment<FragmentDetailBinding>(FragmentDetailBinding:
                     btnShowPassword.setImageResource(R.drawable.ic_eye_show)
                 }
                 isShowPassword = !isShowPassword
+            }
+            btnAddOrEdit.setOnClickListener {
+                val name = etName.text.trim().toString()
+                val site = etSite.text.trim().toString()
+                val email = etEmail.text.trim().toString()
+                val password = etPassword.text.trim().toString()
+                viewModel.addPassword(name, email, site, password, args.idPassword)
             }
         }
     }

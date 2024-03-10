@@ -2,11 +2,11 @@
     <string name="app_name">KeyKeep</string>
     <string name="password_list">Список паролей</string>
     <string name="settings">Настройки</string>
+    <string name="add">Добавить</string>
     <string name="search">Поиск</string>
     <string name="open_drawer_layout">Открыть выдвижное меню</string>
     <string name="set_password">Установить пароль</string>
     <string name="set_finger_password">Установить отпечаток</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="close_screen">Закрыть страницу</string>
     <string name="name">Название</string>
