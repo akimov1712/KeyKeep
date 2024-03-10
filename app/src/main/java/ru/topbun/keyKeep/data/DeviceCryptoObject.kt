@@ -1,4 +1,4 @@
-package ru.topbun.keyKeep.presentation.dialogs.confirm
+package ru.topbun.keyKeep.data
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties

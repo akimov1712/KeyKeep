@@ -1,7 +1,11 @@
 package ru.topbun.keyKeep.di
 
+import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ru.topbun.keyKeep.data.repositories.PasswordRepositoryImpl
@@ -22,5 +26,17 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindSecurityRepository(repository: SecurityRepositoryImpl): SecurityRepository
+
+    companion object{
+
+        private const val SECURITY_PREFS_NAME = "security_prefs_name"
+
+        @Provides
+        @Singleton
+        fun provideSharedPrefs(application: Application): SharedPreferences{
+            return application.getSharedPreferences(SECURITY_PREFS_NAME, Context.MODE_PRIVATE)
+        }
+
+    }
 
 }

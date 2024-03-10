@@ -2,6 +2,7 @@ package ru.topbun.keyKeep.data.repositories
 
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -10,15 +11,36 @@ import ru.topbun.keyKeep.R
 import ru.topbun.keyKeep.domain.enities.FingerResponseEntity
 import ru.topbun.keyKeep.domain.enities.FingerStateEnum
 import ru.topbun.keyKeep.domain.repositories.SecurityRepository
-import ru.topbun.keyKeep.presentation.dialogs.confirm.DeviceCryptoObject
+import ru.topbun.keyKeep.data.DeviceCryptoObject
 import javax.inject.Inject
 
 class SecurityRepositoryImpl @Inject constructor(
     private val context: Application,
-    private val deviceCrypto: DeviceCryptoObject
+    private val deviceCrypto: DeviceCryptoObject,
+    private val sharedPrefs: SharedPreferences
 ) : SecurityRepository {
 
     private val fingerStateFlow = MutableSharedFlow<FingerResponseEntity>(0, 10)
+
+
+    private fun getMasterPassword(): String? {
+        return sharedPrefs.getString(PREFS_KEY_MASTER_PASSWORD, null)
+    }
+
+    override suspend fun checkSetMasterPassword(): Boolean {
+        val password = sharedPrefs.getString(PREFS_KEY_MASTER_PASSWORD, null)
+        return password != null
+    }
+
+    override suspend fun checkCurrentMasterPassword(password: String): Boolean {
+        if (!checkSetMasterPassword()) throw RuntimeException(context.getString(R.string.Password_not_defined))
+        val passwordPrefs = getMasterPassword()
+        return passwordPrefs == password
+    }
+
+    override suspend fun setMasterPassword(password: String) {
+        sharedPrefs.edit().putString(PREFS_KEY_MASTER_PASSWORD, password).apply()
+    }
 
     override fun checkFingerPassword(): Flow<FingerResponseEntity> {
         startFingerprintAuthentication(context)
@@ -89,12 +111,8 @@ class SecurityRepositoryImpl @Inject constructor(
         )
     }
 
-    override suspend fun getMasterPassword(): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun setMasterPassword(password: String) {
-        TODO("Not yet implemented")
+    companion object {
+        private const val PREFS_KEY_MASTER_PASSWORD = "prefs_key_master_password"
     }
 
 }

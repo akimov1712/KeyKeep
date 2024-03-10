@@ -3,6 +3,7 @@ package ru.topbun.keyKeep.presentation.screens.search
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -59,21 +60,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
             btnBack.setOnClickListener {
                 findNavController().popBackStack()
             }
-            etSearch.addTextChangedListener(object: TextWatcher{
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                    viewModel.getPassword(s.toString())
-                }
+            etSearch.addTextChangedListener(afterTextChanged = {
+                viewModel.getPassword(it.toString())
             })
         }
     }

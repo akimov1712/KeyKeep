@@ -11,7 +11,10 @@ import ru.topbun.keyKeep.domain.useCases.password.DeletePasswordUseCase
 import ru.topbun.keyKeep.domain.useCases.password.GetPasswordListUseCase
 import ru.topbun.keyKeep.domain.useCases.password.GetPasswordWithIdUseCase
 import ru.topbun.keyKeep.domain.useCases.password.GetPasswordWithSearchRequestUseCase
+import ru.topbun.keyKeep.domain.useCases.security.CheckCurrentMasterPasswordUseCase
 import ru.topbun.keyKeep.domain.useCases.security.CheckFingerScanUseCase
+import ru.topbun.keyKeep.domain.useCases.security.CheckSetMasterPasswordUseCase
+import ru.topbun.keyKeep.domain.useCases.security.SetMasterPasswordUseCase
 import javax.inject.Singleton
 
 @Module
@@ -54,6 +57,24 @@ interface UseCasesModule {
         @Singleton
         fun provideCheckFingerScanUseCase(repository: SecurityRepository): CheckFingerScanUseCase {
             return CheckFingerScanUseCase(repository)
+        }
+
+        @Provides
+        @Singleton
+        fun provideCheckCurrentMasterPasswordUseCase(repository: SecurityRepository): CheckCurrentMasterPasswordUseCase {
+            return CheckCurrentMasterPasswordUseCase(repository)
+        }
+
+        @Provides
+        @Singleton
+        fun provideCheckSetMasterPasswordUseCase(repository: SecurityRepository): CheckSetMasterPasswordUseCase {
+            return CheckSetMasterPasswordUseCase(repository)
+        }
+
+        @Provides
+        @Singleton
+        fun provideSetMasterPasswordUseCase(repository: SecurityRepository): SetMasterPasswordUseCase {
+            return SetMasterPasswordUseCase(repository)
         }
 
     }

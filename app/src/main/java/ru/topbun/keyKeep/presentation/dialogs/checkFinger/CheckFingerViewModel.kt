@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import ru.topbun.keyKeep.domain.useCases.security.CheckFingerScanUseCase
-import ru.topbun.keyKeep.domain.useCases.security.CheckFingerState
 import javax.inject.Inject
 
 @HiltViewModel

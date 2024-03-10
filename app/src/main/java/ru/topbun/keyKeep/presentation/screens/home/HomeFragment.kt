@@ -1,6 +1,7 @@
 package ru.topbun.keyKeep.presentation.screens.home
 
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -26,6 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.rvPasswords.adapter = adapter
         setFragmentResultListener(ConfirmDialog.CONFIRM_REQUEST_KEY) { _, bundle ->
             val value = bundle.getBoolean(ConfirmDialog.CONFIRM_EXTRA_KEY, false)
+            Toast.makeText(requireContext(), value.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 

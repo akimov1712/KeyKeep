@@ -5,7 +5,8 @@ import ru.topbun.keyKeep.domain.enities.FingerResponseEntity
 
 interface SecurityRepository {
 
-    suspend fun getMasterPassword(): Boolean
+    suspend fun checkSetMasterPassword(): Boolean
+    suspend fun checkCurrentMasterPassword(password: String): Boolean
     suspend fun setMasterPassword(password: String)
     fun checkFingerPassword(): Flow<FingerResponseEntity>
 

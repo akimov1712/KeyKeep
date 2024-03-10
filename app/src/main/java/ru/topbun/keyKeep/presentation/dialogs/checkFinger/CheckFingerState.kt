@@ -1,4 +1,4 @@
-package ru.topbun.keyKeep.domain.useCases.security
+package ru.topbun.keyKeep.presentation.dialogs.checkFinger
 
 import ru.topbun.keyKeep.domain.enities.FingerResponseEntity
 

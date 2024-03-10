@@ -28,4 +28,5 @@
     <string name="No_registered_fingerprints_on_the_device">Нет зарегистрированных отпечатков пальцев на устройстве</string>
     <string name="check_fingerprint">Проверить отпечаток</string>
     <string name="image_to_scan_fingerprint">картинка со сканером отпечатка</string>
+    <string name="Password_not_defined">Master password not defined</string>
 </resources>

@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 import ru.topbun.keyKeep.databinding.DialogCheckFingerPasswordBinding
 import ru.topbun.keyKeep.domain.enities.FingerResponseEntity
 import ru.topbun.keyKeep.domain.enities.FingerStateEnum.*
-import ru.topbun.keyKeep.domain.useCases.security.CheckFingerState
 import ru.topbun.keyKeep.presentation.base.BaseDialogFragment
 import ru.topbun.keyKeep.presentation.base.CustomToast
 import ru.topbun.keyKeep.utils.vibratePhone
