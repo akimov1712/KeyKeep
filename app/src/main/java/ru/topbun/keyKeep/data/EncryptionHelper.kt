@@ -10,9 +10,9 @@ import javax.crypto.spec.SecretKeySpec
 
 
 object EncryptionHelper {
-    const val secretKey = "tK5UTui+D6hrygd765e6$^%^Ul6vHhdIESMB6sQ="
-    const val salt = "LKSJDFLNjweiohn3io2ru8gdfiuvn3="
-    const val iv = "bVQzNFNhRkQ1Njc4UUFaWA=="
+    const val secretKey = "tK5UTui+DPh8lIlBxya5XVsmeDCoUl6vHhdIESMB6sQ="
+    const val salt = "QWlGNHNhMTJTQWZ2bGhpV3U=" // base64 decode => AiF4sa12SAfvlhiWu
+    const val iv = "bVQzNFNhRkQ1Njc4UUFaWA==" // base64 decode => mT34SaFD5678QAZX
 
     fun encrypt(strToEncrypt: String) :  String
     {

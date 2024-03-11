@@ -51,10 +51,6 @@ lifecycle-livedata-ktx = "2.7.0"
     navigationFragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navComponent" }
     navigationUi = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navComponent" }
 
-        #JSON
-    gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-    jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
-
         #Database (Room)
     roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
     roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
