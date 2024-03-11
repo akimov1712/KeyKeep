@@ -32,8 +32,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
 
     override fun setViews() {
         super.setViews()
-        checkSetPassword()
         requestFingerPrint()
+        checkSetPassword()
     }
 
     private fun checkSetPassword() {

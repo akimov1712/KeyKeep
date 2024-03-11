@@ -8,6 +8,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ru.topbun.keyKeep.data.database.AppDatabase
+import ru.topbun.keyKeep.data.database.dao.PasswordDao
 import ru.topbun.keyKeep.data.repositories.PasswordRepositoryImpl
 import ru.topbun.keyKeep.data.repositories.SecurityRepositoryImpl
 import ru.topbun.keyKeep.domain.repositories.PasswordRepository
@@ -16,7 +18,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface RepositoryModule {
+interface DataModule {
 
     @Binds
     @Singleton
@@ -28,13 +30,18 @@ interface RepositoryModule {
     fun bindSecurityRepository(repository: SecurityRepositoryImpl): SecurityRepository
 
     companion object{
-
         private const val SECURITY_PREFS_NAME = "security_prefs_name"
 
         @Provides
         @Singleton
-        fun provideSharedPrefs(application: Application): SharedPreferences{
+        fun provideSharedPrefs(application: Application): SharedPreferences {
             return application.getSharedPreferences(SECURITY_PREFS_NAME, Context.MODE_PRIVATE)
+        }
+
+        @Provides
+        @Singleton
+        fun providePasswordDao(application: Application): PasswordDao {
+            return AppDatabase.getInstance(application).passwordDao()
         }
 
     }

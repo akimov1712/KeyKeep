@@ -19,7 +19,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface UseCasesModule {
+interface DomainModule {
 
     companion object{
 

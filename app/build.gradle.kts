@@ -46,7 +46,6 @@ android {
 }
 
 dependencies {
-    implementation (libs.aescrypt)
 
 //    Hilt
     implementation (libs.hiltAndroid)

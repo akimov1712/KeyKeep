@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import android.widget.Toast
 import ru.topbun.keyKeep.R
+import ru.topbun.keyKeep.databinding.ToastLayoutBinding
 
 object CustomToast {
 
@@ -13,15 +14,11 @@ object CustomToast {
 
     fun toastDefault(context: Context, text: String) {
         toast = Toast(context)
-        val view = LayoutInflater.from(context).inflate(
-            R.layout.toast_layout,
-            null,
-            false
-        )
-        val tvTitle = view.findViewById<TextView>(R.id.tv_title)
-        tvTitle.text = text
+        val inflater = LayoutInflater.from(context)
+        val binding = ToastLayoutBinding.inflate(inflater, null, false)
+        binding.tvTitle.text = text
         toast?.let {
-            it.view = view
+            it.view = binding.root
             it.duration = Toast.LENGTH_SHORT
             it.setGravity(Gravity.TOP, 0, 60)
             it.show()

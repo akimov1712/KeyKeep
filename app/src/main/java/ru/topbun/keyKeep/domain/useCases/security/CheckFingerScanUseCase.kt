@@ -4,6 +4,6 @@ import ru.topbun.keyKeep.domain.repositories.SecurityRepository
 
 class CheckFingerScanUseCase(private val securityRepository: SecurityRepository) {
 
-    operator fun invoke() = securityRepository.checkFingerPassword()
+    suspend operator fun invoke() = securityRepository.checkFingerPassword()
 
 }

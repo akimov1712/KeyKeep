@@ -8,6 +8,6 @@ interface SecurityRepository {
     suspend fun checkSetMasterPassword(): Boolean
     suspend fun checkCurrentMasterPassword(password: String): Boolean
     suspend fun setMasterPassword(password: String)
-    fun checkFingerPassword(): Flow<FingerResponseEntity>
+    suspend fun checkFingerPassword(): Flow<FingerResponseEntity>
 
 }

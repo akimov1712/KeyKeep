@@ -1,6 +1,5 @@
 package ru.topbun.keyKeep.presentation.dialogs.checkFinger
 
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -9,7 +8,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.topbun.keyKeep.databinding.DialogCheckFingerPasswordBinding
 import ru.topbun.keyKeep.domain.enities.FingerResponseEntity
-import ru.topbun.keyKeep.domain.enities.FingerStateEnum.*
+import ru.topbun.keyKeep.domain.enities.FingerStateEnum.AUTH_ERROR
+import ru.topbun.keyKeep.domain.enities.FingerStateEnum.AUTH_FAILED
+import ru.topbun.keyKeep.domain.enities.FingerStateEnum.AUTH_SUCCESS
+import ru.topbun.keyKeep.domain.enities.FingerStateEnum.NOT_SUPPORT
+import ru.topbun.keyKeep.domain.enities.FingerStateEnum.NO_REGISTERED
 import ru.topbun.keyKeep.presentation.base.BaseDialogFragment
 import ru.topbun.keyKeep.presentation.base.CustomToast
 import ru.topbun.keyKeep.utils.vibratePhone

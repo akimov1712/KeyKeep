@@ -28,7 +28,7 @@ class SecurityRepositoryImpl @Inject constructor(
     }
 
     override suspend fun checkSetMasterPassword(): Boolean {
-        val password = sharedPrefs.getString(PREFS_KEY_MASTER_PASSWORD, null)
+        val password = getMasterPassword()
         return password != null
     }
 
@@ -42,7 +42,7 @@ class SecurityRepositoryImpl @Inject constructor(
         sharedPrefs.edit().putString(PREFS_KEY_MASTER_PASSWORD, password).apply()
     }
 
-    override fun checkFingerPassword(): Flow<FingerResponseEntity> {
+    override suspend fun checkFingerPassword(): Flow<FingerResponseEntity> {
         startFingerprintAuthentication(context)
         return fingerStateFlow.asSharedFlow()
     }

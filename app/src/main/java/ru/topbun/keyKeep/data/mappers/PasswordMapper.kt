@@ -5,7 +5,7 @@ import ru.topbun.keyKeep.data.database.entities.PasswordDBO
 import ru.topbun.keyKeep.domain.enities.PasswordEntity
 import javax.inject.Inject
 
-class PasswordMapper @Inject constructor(){
+object PasswordMapper{
 
     fun mapEntityToDBO(entity: PasswordEntity) = PasswordDBO(
         id = entity.id,
