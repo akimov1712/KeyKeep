@@ -1,3 +1,5 @@
+import ru.topbun.buildsrc.MetaData
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
@@ -7,17 +9,17 @@ plugins {
 }
 
 android {
-    namespace = "ru.topbun.keyKeep"
-    compileSdk = 34
+    namespace = MetaData.applicationId
+    compileSdk = MetaData.compileSdkVersion
 
     defaultConfig {
-        applicationId = "ru.topbun.keyKeep"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = MetaData.applicationId
+        minSdk = MetaData.minSdkVersion
+        targetSdk = MetaData.targetSdkVersion
+        versionCode = MetaData.versionCode
+        versionName = MetaData.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = MetaData.testInstrumentationRunner
     }
 
     buildTypes {
@@ -60,10 +62,6 @@ dependencies {
 //    Navigation
     implementation(libs.navigationFragment)
     implementation(libs.navigationUi)
-
-//    JSON
-    implementation (libs.gson)
-    implementation (libs.jsoup)
 
 //    Room
     implementation(libs.roomRuntime)

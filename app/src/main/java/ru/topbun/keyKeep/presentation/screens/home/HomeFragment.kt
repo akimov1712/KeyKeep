@@ -1,6 +1,5 @@
 package ru.topbun.keyKeep.presentation.screens.home
 
-import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.GravityCompat
@@ -13,7 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import ru.topbun.Const
+import ru.topbun.keyKeep.Const
 import ru.topbun.keyKeep.databinding.FragmentHomeBinding
 import ru.topbun.keyKeep.domain.enities.ConfirmTypeEnum
 import ru.topbun.keyKeep.presentation.base.BaseFragment
@@ -123,7 +122,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSetFingerPasswordDialog())
             }
             btnAddPassword.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddOrEditFragment(Const.UNDEFINED_ID))
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddOrEditFragment(
+                    Const.UNDEFINED_ID))
             }
         }
     }

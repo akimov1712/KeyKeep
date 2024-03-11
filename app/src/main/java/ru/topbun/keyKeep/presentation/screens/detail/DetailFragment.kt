@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import ru.topbun.Const
+import ru.topbun.keyKeep.Const
 import ru.topbun.keyKeep.R
 import ru.topbun.keyKeep.databinding.FragmentDetailBinding
 import ru.topbun.keyKeep.domain.enities.PasswordEntity
