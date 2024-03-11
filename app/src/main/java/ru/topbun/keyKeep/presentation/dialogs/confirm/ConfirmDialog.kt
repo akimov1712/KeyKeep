@@ -2,7 +2,6 @@ package ru.topbun.keyKeep.presentation.dialogs.confirm
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
@@ -14,15 +13,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import ru.topbun.Const
+import ru.topbun.keyKeep.Const
 import ru.topbun.keyKeep.databinding.DialogConfirmBinding
 import ru.topbun.keyKeep.domain.enities.ConfirmTypeEnum
 import ru.topbun.keyKeep.domain.enities.FingerResponseEntity
 import ru.topbun.keyKeep.domain.enities.FingerStateEnum
 import ru.topbun.keyKeep.presentation.base.BaseDialogFragment
 import ru.topbun.keyKeep.presentation.base.CustomToast
-import ru.topbun.keyKeep.presentation.dialogs.checkFinger.CheckFingerState
-import ru.topbun.keyKeep.presentation.screens.home.HomeFragmentDirections
 import ru.topbun.keyKeep.utils.vibratePhone
 
 @AndroidEntryPoint
