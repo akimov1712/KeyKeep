@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_white">
+        android:background="@color/background">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
+                app:tint="@color/on_background"
                 android:layout_gravity="center"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_menu"
@@ -47,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="4dp"
+                app:tint="@color/on_background"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_search"
                 android:contentDescription="@string/search" />
@@ -84,7 +86,7 @@
             android:background="@drawable/background_floating_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:tint="@color/white" />
+            app:tint="@color/background" />
 
         <TextView
             android:id="@+id/tv_empty_list"
@@ -100,7 +102,7 @@
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:indeterminateTint="@color/element_red"
+            android:indeterminateTint="@color/element_primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
@@ -114,7 +116,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="300dp"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/background"
         android:layout_gravity="start">
 
         <TextView
@@ -135,6 +137,7 @@
             android:layout_height="52dp"
             android:layout_marginTop="14dp"
             android:text="@string/set_password"
+            app:drawableTint="@color/on_background"
             android:drawableStart="@drawable/ic_key"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,6 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:text="@string/check_fingerprint"
+            app:drawableTint="@color/on_background"
             android:drawableStart="@drawable/ic_set_finger_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

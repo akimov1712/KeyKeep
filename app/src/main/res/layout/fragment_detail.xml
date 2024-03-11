@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/background"
     tools:context=".presentation.screens.detail.DetailFragment">
 
     <ImageButton
@@ -17,6 +17,7 @@
         android:contentDescription="@string/close_screen"
         android:padding="4dp"
         android:src="@drawable/ic_arrow_left"
+        app:tint="@color/on_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -113,9 +114,9 @@
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_weight="1"
-            android:textColor="@color/white"
+            android:textColor="@color/text_white"
             android:text="@string/edit"
-            android:backgroundTint="@color/element_red"
+            android:backgroundTint="@color/element_primary"
             android:background="@drawable/background_primary_button"/>
 
 
@@ -125,7 +126,6 @@
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
             android:text="@string/edit"
             android:src="@drawable/ic_delete"
             android:background="@drawable/background_primary_button"/>

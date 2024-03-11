@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="on_background">#FF000000</color>
+    <color name="background">#FFFFFFFF</color>
 
-    <color name="background_white">#FFFFFFFF</color>
+    <color name="text_primary">#000000</color>
+    <color name="text_secondary">#9C9C9C</color>
+    <color name="text_tertiary">#FB191D</color>
+    <color name="text_white">#ffffff</color>
 
-    <color name="text_black">#000000</color>
-    <color name="text_grey">#9C9C9C</color>
-    <color name="text_red">#FB191D</color>
-
-    <color name="element_red_light">#FFD6D6</color>
-    <color name="element_blue_light">#F3F7FF</color>
-    <color name="element_red">#FF3434</color>
+    <color name="element_tertiary">#FFD6D6</color>
+    <color name="element_secondary">#F3F7FF</color>
+    <color name="element_primary">#FF3434</color>
 
 </resources>

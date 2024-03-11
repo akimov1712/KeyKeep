@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <color name="on_background">#ffffff</color>
+    <color name="background">#0D0D0D</color>
+
+    <color name="text_primary">#ffffff</color>
+    <color name="text_secondary">#9C9C9C</color>
+    <color name="text_tertiary">#FF4E4E</color>
+    <color name="text_white">#ffffff</color>
+
+    <color name="element_tertiary">#FFD6D6</color>
+    <color name="element_secondary">#131313</color>
+    <color name="element_primary">#FF4E4E</color>
+
+
+</resources>

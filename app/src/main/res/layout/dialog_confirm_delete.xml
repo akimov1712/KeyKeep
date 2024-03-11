@@ -8,6 +8,7 @@
     app:cardCornerRadius="25dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/background"
         android:layout_width="330dp"
         android:layout_height="wrap_content">
 
@@ -43,9 +44,9 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/background_primary_button"
-            android:backgroundTint="@color/element_red"
+            android:backgroundTint="@color/element_primary"
             android:text="@string/delete"
-            android:textColor="@color/white"
+            android:textColor="@color/text_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_descr" />
@@ -62,7 +63,7 @@
             android:clickable="false"
             android:focusable="false"
             android:text="@string/cancel"
-            android:textColor="@color/text_red"
+            android:textColor="@color/text_tertiary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btn_delete"
             app:layout_constraintStart_toStartOf="@+id/btn_delete"
